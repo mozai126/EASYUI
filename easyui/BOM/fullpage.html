@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { margin: 0; }
+        section { height: 100vh; }
+        section:nth-child(1) { background: lightpink; }
+        section:nth-child(2) { background: lightblue; }
+        section:nth-child(3) { background: lightgreen; }
+        section:nth-child(4) { background: lightyellow; }
+      </style>
+</head>
+<body>
+    <section>page1 按上下键滚动</section>
+    <section>page2 按上下键滚动</section>
+    <section>page3 按上下键滚动</section>
+    <section>page4 按上下键滚动</section>
+    <script>
+        window.onkeydown = function(e) {
+            console.log(e)
+            if(e.key === 'ArrowDown') {
+                e.preventDefault()            /*由于浏览器本身对于该键有默认事件所以需要阻止默认事件*/
+                window.scrollBy({               /*scrollby（x,y）或者scrollby（options）options包含3个属性的对象top=y left=x behavior滚动行为一般值是默认直接滚动，smooth滑动*/
+                    top: window.innerHeight,      /*innerHeight窗口显示大小*/
+                    behavior: 'smooth'
+                })
+            }else if(e.key === 'ArrowUp') {
+                e.preventDefault()
+                window.scrollBy({
+                    top: 0-window.innerHeight,
+                    behavior: 'smooth'
+                })
+            }
+        }
+    </script>
+</body>
+</html>
